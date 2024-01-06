@@ -16,17 +16,9 @@ function App() {
         <p>
           WTFs por minuto {wtf}
         </p>
-        <button onClick={() => wtf = wtf +1}>
-          WTF
+        <button className="boton" onClick={() => wtf = wtf +1}>
+          WTF!
         </button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
