@@ -17,6 +17,7 @@ import './App.css';
 //[X] Por que react no es un framework? (allegedly)
 //[X] Array spread operator
 //[X] Como testear que no hay una cosa en la pantalla
+//[ ] Como tirar todos los tests de una clase en Webstorm?
 
 function App(){
     function wtf(){
@@ -36,7 +37,7 @@ function App(){
                     WTFs por minuto {wtfs}
                 </p>
                 <button className="boton" onClick={toggle}>
-                    Start Panic!
+                    {inPanic ? "Calm Down" : "Start Panic!"}
                 </button>
                 {inPanic ? <button className="boton" onClick={wtf}>
                 WTF!

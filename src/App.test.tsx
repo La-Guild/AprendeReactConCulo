@@ -30,5 +30,16 @@ test('calm by default', () => {
   expect(wtfsButton).toBeNull();
 });
 
+test('calm down', () => {
+  render(<App />);
+  const button = screen.getByText(/Start Panic!/i);
+  fireEvent.click(button)
+
+  fireEvent.click(button)
+
+  const wtfsButton = screen.queryByText(/WTF!/i);
+  expect(wtfsButton).toBeNull();
+});
+
 
 
