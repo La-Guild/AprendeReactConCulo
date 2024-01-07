@@ -24,6 +24,9 @@ function App(){
         setWtfs(wtfs => wtfs + 1)
     }
     function toggle(){
+        if (inPanic){
+            setWtfs(0)
+        }
         setPanic(current => !current)
     }
 
