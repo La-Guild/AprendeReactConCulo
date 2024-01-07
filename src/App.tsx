@@ -41,16 +41,16 @@ function App(){
     return (
         <div className="App">
             <header className="App-header">
-                <p>
-                    {inPanic ? "WTFs por minuto " + wtfs : ""}
-                </p>
                 <button className="button" onClick={toggle}>
                     {inPanic ? "Calm Down" : "Start Panic!"}
                 </button>
+                <p>
+                    {inPanic ? "WTFs por minuto " + wtfs : ""}
+                </p>
                 {inPanic ? <button className="button" onClick={wtf}>
-                WTF!
-            </button>
-                : null}
+                        WTF!
+                    </button>
+                    : null}
                 <ul>
                     {historialLabels}
                 </ul>
