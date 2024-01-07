@@ -16,25 +16,34 @@ import './App.css';
 //[X] Old value pasado en el set del estado
 //[X] Por que react no es un framework? (allegedly)
 //[X] Array spread operator
+//[X] Como testear que no hay una cosa en la pantalla
 
 function App(){
     function wtf(){
-        console.log("WTF!");
         setWtfs(wtfs => wtfs + 1)
+    }
+    function toggle(){
+        setPanic(current => !current)
     }
 
     const [wtfs, setWtfs] = React.useState(0);
+    const [inPanic, setPanic] = React.useState(false);
 
     return (
         <div className="App">
-          <header className="App-header">
-            <p>
-              WTFs por minuto {wtfs}
-            </p>
-            <button className="boton" onClick={wtf}>
-              WTF!
+            <header className="App-header">
+                <p>
+                    WTFs por minuto {wtfs}
+                </p>
+                <button className="boton" onClick={toggle}>
+                    Start Panic!
+                </button>
+                {inPanic ? <button className="boton" onClick={wtf}>
+                WTF!
             </button>
-          </header>
+                : null}
+
+            </header>
         </div>
     );
 }

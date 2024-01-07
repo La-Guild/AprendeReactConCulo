@@ -10,10 +10,25 @@ test('wtfs empiezan en cero', () => {
 
 test('wtfs aumentan', () => {
   render(<App />);
+  fireEvent.click(screen.getByText(/Start Panic!/i))
   const button = screen.getByText(/WTF!/i);
   fireEvent.click(button)
   const text = screen.getByText(/WTFs por minuto 1/i);
   expect(text).toBeInTheDocument();
 });
+
+test('start panic', () => {
+  render(<App />);
+  const button = screen.getByText(/Start Panic!/i);
+  fireEvent.click(button)
+  const wtfsButton = screen.getByText(/WTF!/i);
+  expect(wtfsButton).toBeInTheDocument();
+});
+test('calm by default', () => {
+  render(<App />);
+  const wtfsButton = screen.queryByText(/WTF!/i);
+  expect(wtfsButton).toBeNull();
+});
+
 
 
