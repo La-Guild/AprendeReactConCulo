@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {HistoryElement} from "./HistoryElement";
 //[ ] Por qué se pinta el botón en el centro?
@@ -11,7 +11,7 @@ import {HistoryElement} from "./HistoryElement";
 //[ ] my-5 mx-3? Esto lo mismo es de un video de youtube random y ya
 //[X] En export default, que es el default
 // No sabemos si en JS o TS o React
-//[ ] React hooks
+//[X] React hooks.... Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
 //[ ] Array destructuring para el estado
 //[X] Como testear
 //[X] Old value pasado en el set del estado
@@ -20,6 +20,9 @@ import {HistoryElement} from "./HistoryElement";
 //[X] Como testear que no hay una cosa en la pantalla
 //[ ] Como tirar todos los tests de una clase en Webstorm?
 //[X] Como hacer un array vacio
+//[ ] Timers?
+//[ ] use effect???
+//[ ] Deps useeffect?
 
 function App(){
     function wtf(){
@@ -38,12 +41,24 @@ function App(){
         setPanic(current => !current)
     }
 
+
     const [start, setStart] = React.useState(new Date())
     const [wtfs, setWtfs] = React.useState(0)
     const [inPanic, setPanic] = React.useState(false)
     const [historial ,setHistorial] = React.useState(Array(0))
+    const [elapsed ,setElapsed] = React.useState(0)
 
     const historialLabels = historial.map((wtf, index) => <li key={index}>{wtf.toString()}</li>)
+
+    // create an interval and do cleanup
+    useEffect(() => {
+        if (inPanic) {
+            const interval = setInterval(() => {
+                setElapsed(elapsed => elapsed + 1000)
+            }, 1000);
+            return () => clearInterval(interval);
+        }
+    }, [inPanic]);
 
     return (
         <div className="App">
@@ -60,8 +75,8 @@ function App(){
                     : null}
                 <ul>
                     {historialLabels}
+                    {elapsed / 1000.0}
                 </ul>
-
             </header>
         </div>
     );
