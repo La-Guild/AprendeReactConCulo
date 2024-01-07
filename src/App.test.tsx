@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import App from './App';
+import App, {WtfPerMinute} from './App';
 
 test('wtfs aumentan', () => {
   render(<App />);
@@ -65,4 +65,21 @@ test('calm down adds element to history', () => {
   const text = screen.getByText(/Wtfs were... 1/i);
   expect(text).toBeInTheDocument();
 });
+
+
+test('wtfs por minuto', () =>{
+
+expect(WtfPerMinute(1, 60000)).toBe(1)
+  expect(WtfPerMinute(1, 120000)).toBe(0.5)
+  expect(WtfPerMinute(1, 30000)).toBe(1)
+  expect(WtfPerMinute(1, 0)).toBe(1)
+  expect(WtfPerMinute(0, 60000)).toBe(0)
+  expect(WtfPerMinute(0, 0)).toBe(0)
+  expect(WtfPerMinute(0, 30000)).toBe(0)
+  expect(WtfPerMinute(0, 120000)).toBe(0)
+  expect(WtfPerMinute(2, 60000)).toBe(2)
+  expect(WtfPerMinute(2, 0)).toBe(2)
+  expect(WtfPerMinute(2, 30000)).toBe(2)
+  expect(WtfPerMinute(2, 120000)).toBe(1)
+})
 

@@ -74,7 +74,10 @@ function App(){
                     {inPanic ? "Calm Down" : "Start Panic!"}
                 </button>
                 <p>
-                    {inPanic ? "WTFs por minuto " + wtfs : ""}
+                    {inPanic ? "WTFs totales " + wtfs : ""}
+                </p>
+                <p>
+                    {inPanic ? "WTFs por minuto " + WtfPerMinute(wtfs, elapsed) : ""}
                 </p>
                 {inPanic ? <button className="button" onClick={wtf}>
                         WTF!
@@ -89,4 +92,7 @@ function App(){
     );
 }
 
+export function WtfPerMinute(wtfs: number, elapsed: number) {
+    return elapsed <= 60000 ? wtfs : wtfs / (elapsed / 60000)
+}
 export default App;
