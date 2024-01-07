@@ -18,6 +18,7 @@ import './App.css';
 //[X] Array spread operator
 //[X] Como testear que no hay una cosa en la pantalla
 //[ ] Como tirar todos los tests de una clase en Webstorm?
+//[ ] Como hacer un array vacio
 
 function App(){
     function wtf(){
@@ -35,7 +36,7 @@ function App(){
     const [inPanic, setPanic] = React.useState(false);
     const [historial ,setHistorial] = React.useState(Array(0));
 
-    const historialLabels = historial.map((wtf, index) => <li key={index}>{wtf}</li>)
+    const historialLabels = historial.map((wtf, index) => <li key={index}>Wtfs were... {wtf}</li>)
 
     return (
         <div className="App">

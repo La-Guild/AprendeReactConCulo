@@ -41,7 +41,7 @@ test('calm down hides the button', () => {
   expect(wtfsButton).toBeNull();
 });
 
-test('calm down resets the counter', () => {
+test('calm down adds element to history', () => {
   render(<App />);
   const button = screen.getByText(/Start Panic!/i);
   fireEvent.click(button)
@@ -50,7 +50,7 @@ test('calm down resets the counter', () => {
 
   fireEvent.click(button)
 
-  const text = screen.getByText(/WTFs por minuto 0/i);
+  const text = screen.getByText(/Wtfs were... 1/i);
   expect(text).toBeInTheDocument();
 });
 
