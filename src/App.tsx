@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {WTF} from "./WTF";
 
 //[ ] Por qué se pinta el botón en el centro?
 //[ ] Como hacer que reaccione react a lo que hacemos
@@ -9,23 +10,8 @@ import './App.css';
 //[ ] Dispatch?
 //[ ] Cómo se saca la consola?
 //[ ] Como depurar
-//[ ]my-5 mx-3? Esto lo mismo es de un video de youtube random y ya
+//[ ] my-5 mx-3? Esto lo mismo es de un video de youtube random y ya
 
-
-class WTF {
-    wtf: number;
-  constructor() {
-    this.wtf = 0;
-  }
-  get() {
-    return this.wtf;
-  }
-  increment() {
-    this.wtf = this.wtf + 1;
-  }
-
-
-}
 
 class Apsds extends React.Component {
     wtf: WTF;
