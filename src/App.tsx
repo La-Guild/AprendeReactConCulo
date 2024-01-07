@@ -26,12 +26,16 @@ function App(){
     function toggle(){
         if (inPanic){
             setWtfs(0)
+            setHistorial(historial  => [...historial, wtfs])
         }
         setPanic(current => !current)
     }
 
     const [wtfs, setWtfs] = React.useState(0);
     const [inPanic, setPanic] = React.useState(false);
+    const [historial ,setHistorial] = React.useState(Array(0));
+
+    const historialLabels = historial.map((wtf, index) => <li key={index}>{wtf}</li>)
 
     return (
         <div className="App">
@@ -46,6 +50,9 @@ function App(){
                 WTF!
             </button>
                 : null}
+                <ul>
+                    {historialLabels}
+                </ul>
 
             </header>
         </div>
