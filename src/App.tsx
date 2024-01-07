@@ -52,11 +52,18 @@ function App(){
 
     // create an interval and do cleanup
     useEffect(() => {
+        const delta = 17
+
         if (inPanic) {
             const interval = setInterval(() => {
-                setElapsed(elapsed => elapsed + 1000)
-            }, 1000);
+                setElapsed(elapsed => elapsed + delta)
+            }
+            , delta);
             return () => clearInterval(interval);
+        }
+        else
+        {
+            setElapsed(0)
         }
     }, [inPanic]);
 
@@ -75,7 +82,7 @@ function App(){
                     : null}
                 <ul>
                     {historialLabels}
-                    {elapsed / 1000.0}
+                    {inPanic ? "Time in panic: " + elapsed / 1000 : ""}
                 </ul>
             </header>
         </div>
