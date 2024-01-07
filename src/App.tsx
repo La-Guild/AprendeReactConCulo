@@ -36,7 +36,7 @@ function App(){
     const [inPanic, setPanic] = React.useState(false);
     const [historial ,setHistorial] = React.useState(Array(0));
 
-    const historialLabels = historial.map((wtf, index) => <li key={index}>Wtfs were... {wtf}</li>)
+    const historialLabels = historial.map((wtf, index) => <li key={index}>Wtfs were... {wtf} at {new Date().toUTCString()}</li>)
 
     return (
         <div className="App">
