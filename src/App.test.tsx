@@ -2,12 +2,6 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('wtfs empiezan en cero', () => {
-  render(<App />);
-  const text = screen.getByText(/WTFs por minuto 0/i);
-  expect(text).toBeInTheDocument();
-});
-
 test('wtfs aumentan', () => {
   render(<App />);
   fireEvent.click(screen.getByText(/Start Panic!/i))
@@ -24,13 +18,28 @@ test('start panic', () => {
   const wtfsButton = screen.getByText(/WTF!/i);
   expect(wtfsButton).toBeInTheDocument();
 });
-test('calm by default', () => {
+
+
+test('wtfs empiezan en cero al empezar el pánico', () => {
   render(<App />);
-  const wtfsButton = screen.queryByText(/WTF!/i);
-  expect(wtfsButton).toBeNull();
+  const button = screen.getByText(/Start Panic!/i);
+  fireEvent.click(button)
+
+  const text = screen.getByText(/WTFs por minuto 0/i);
+  expect(text).toBeInTheDocument();
 });
 
-test('calm down hides the button', () => {
+test('calm by default', () => {
+  render(<App />);
+
+  const wtfsButton = screen.queryByText(/WTF!/i);
+  expect(wtfsButton).toBeNull();
+
+  const text = screen.queryByText(/WTFs por minuto 0/i);
+  expect(text).toBeNull();
+});
+
+test('calm down hides the button and the text', () => {
   render(<App />);
   const button = screen.getByText(/Start Panic!/i);
   fireEvent.click(button)
@@ -39,6 +48,9 @@ test('calm down hides the button', () => {
 
   const wtfsButton = screen.queryByText(/WTF!/i);
   expect(wtfsButton).toBeNull();
+
+  const text = screen.queryByText(/WTFs por minuto 0/i);
+  expect(text).toBeNull();
 });
 
 test('calm down adds element to history', () => {

@@ -42,12 +42,12 @@ function App(){
         <div className="App">
             <header className="App-header">
                 <p>
-                    WTFs por minuto {wtfs}
+                    {inPanic ? "WTFs por minuto " + wtfs : ""}
                 </p>
-                <button className="boton" onClick={toggle}>
+                <button className="button" onClick={toggle}>
                     {inPanic ? "Calm Down" : "Start Panic!"}
                 </button>
-                {inPanic ? <button className="boton" onClick={wtf}>
+                {inPanic ? <button className="button" onClick={wtf}>
                 WTF!
             </button>
                 : null}
