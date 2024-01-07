@@ -2,26 +2,32 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 //[ ] Por qué se pinta el botón en el centro?
-//[ ] Como hacer que reaccione react a lo que hacemos
-//[ ] Por qué no se actualiza el número de WTFs?
+//[X] Como hacer que reaccione react a lo que hacemos
+//[X] Por qué no se actualiza el número de WTFs?
 //[ ] Que es redux?
 //[ ] Dispatch?
-//[ ] Cómo se saca la consola?
+//[X] Cómo se saca la consola? (F12 en Chrome)
 //[ ] Como depurar
 //[ ] my-5 mx-3? Esto lo mismo es de un video de youtube random y ya
 //[ ] En export default, que es el default
+//[ ] React hooks
+//[ ] Array destructuring para el estado
+//[X] Como testear
+//[X] Old value pasado en el set del estado
+//[X] Por que react no es un framework? (allegedly)
+//[X] Array spread operator
 
 function App(){
     function wtf(){
         console.log("WTF!");
-        setWtfs(wtfs + 1)
+        setWtfs(wtfs => wtfs + 1)
     }
 
     const [wtfs, setWtfs] = React.useState(0);
+
     return (
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo"/>
             <p>
               WTFs por minuto {wtfs}
             </p>
