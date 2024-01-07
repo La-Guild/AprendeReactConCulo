@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {HistoryElement} from "./HistoryElement";
 //[ ] Por qué se pinta el botón en el centro?
 //[X] Como hacer que reaccione react a lo que hacemos
 //[X] Por qué no se actualiza el número de WTFs?
@@ -9,7 +9,8 @@ import './App.css';
 //[X] Cómo se saca la consola? (F12 en Chrome)
 //[ ] Como depurar
 //[ ] my-5 mx-3? Esto lo mismo es de un video de youtube random y ya
-//[ ] En export default, que es el default
+//[X] En export default, que es el default
+// No sabemos si en JS o TS o React
 //[ ] React hooks
 //[ ] Array destructuring para el estado
 //[X] Como testear
@@ -18,7 +19,7 @@ import './App.css';
 //[X] Array spread operator
 //[X] Como testear que no hay una cosa en la pantalla
 //[ ] Como tirar todos los tests de una clase en Webstorm?
-//[ ] Como hacer un array vacio
+//[X] Como hacer un array vacio
 
 function App(){
     function wtf(){
@@ -27,16 +28,22 @@ function App(){
     function toggle(){
         if (inPanic){
             setWtfs(0)
-            setHistorial(historial  => [...historial, wtfs])
+
+            setHistorial(historial  => [...historial, new HistoryElement(start, new Date(), wtfs)])
+        }
+        else
+        {
+            setStart(start => new Date());
         }
         setPanic(current => !current)
     }
 
-    const [wtfs, setWtfs] = React.useState(0);
-    const [inPanic, setPanic] = React.useState(false);
-    const [historial ,setHistorial] = React.useState(Array(0));
+    const [start, setStart] = React.useState(new Date())
+    const [wtfs, setWtfs] = React.useState(0)
+    const [inPanic, setPanic] = React.useState(false)
+    const [historial ,setHistorial] = React.useState(Array(0))
 
-    const historialLabels = historial.map((wtf, index) => <li key={index}>Wtfs were... {wtf} at {new Date().toUTCString()}</li>)
+    const historialLabels = historial.map((wtf, index) => <li key={index}>{wtf.toString()}</li>)
 
     return (
         <div className="App">
