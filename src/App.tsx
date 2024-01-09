@@ -20,8 +20,8 @@ import {HistoryElement} from "./HistoryElement";
 //[X] Como testear que no hay una cosa en la pantalla
 //[ ] Como tirar todos los tests de una clase en Webstorm?
 //[X] Como hacer un array vacio
-//[ ] Timers?
-//[ ] use effect???
+//[X] Timers?
+//[X] use effect???
 //[ ] Deps useeffect?
 
 function App(){
