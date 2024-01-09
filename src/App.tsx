@@ -23,6 +23,7 @@ import {HistoryElement} from "./HistoryElement";
 //[X] Timers?
 //[X] use effect???
 //[ ] Deps useeffect?
+//[ ] No sabemos cómo modularizar por compoenntes cuando necesitan estado compartido
 
 function App(){
     function wtf(){
