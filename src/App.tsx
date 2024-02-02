@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import {HistoryElement} from "./HistoryElement";
-//[ ] Por qué se pinta el botón en el centro?
+import {Title} from "./Title";
+//[X] Por qué se pinta el botón en el centro?
 //[X] Como hacer que reaccione react a lo que hacemos
 //[X] Por qué no se actualiza el número de WTFs?
 //[ ] Que es redux?
@@ -10,7 +11,7 @@ import {HistoryElement} from "./HistoryElement";
 //[ ] Como depurar
 //[ ] my-5 mx-3? Esto lo mismo es de un video de youtube random y ya
 //[X] En export default, que es el default
-// No sabemos si en JS o TS o React
+    // No sabemos si en JS o TS o React
 //[X] React hooks.... Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
 //[ ] Array destructuring para el estado
 //[X] Como testear
@@ -70,6 +71,7 @@ function App(){
 
     return (
         <div className="App">
+            <Title/>
             <header className="App-header">
                 <button className="button" onClick={toggle}>
                     {inPanic ? "Calm Down" : "Start Panic!"}
