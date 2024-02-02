@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import './App.css';
 import {HistoryElement} from "./HistoryElement";
 import {Title} from "./Title";
+import {Wtfs} from "./Wtfs";
 //[X] Por qué se pinta el botón en el centro?
 //[X] Como hacer que reaccione react a lo que hacemos
 //[X] Por qué no se actualiza el número de WTFs?
@@ -72,25 +73,8 @@ function App(){
     return (
         <div className="App">
             <Title/>
-            <header className="App-header">
-                <button className="button" onClick={toggle}>
-                    {inPanic ? "Calm Down" : "Start Panic!"}
-                </button>
-                <p>
-                    {inPanic ? "WTFs totales " + wtfs : ""}
-                </p>
-                <p>
-                    {inPanic ? "WTFs por minuto " + WtfPerMinute(wtfs, elapsed) : ""}
-                </p>
-                {inPanic ? <button className="button" onClick={wtf}>
-                        WTF!
-                    </button>
-                    : null}
-                <ul>
-                    {historialLabels}
-                    {inPanic ? "Time in panic: " + elapsed / 1000 : ""}
-                </ul>
-            </header>
+            <Wtfs onClick={toggle} inPanic={inPanic} wtfs={wtfs} elapsed={elapsed} onClick1={wtf}
+                  elements={historialLabels}/>
         </div>
     );
 }
