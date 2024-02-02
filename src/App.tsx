@@ -28,58 +28,17 @@ import {Wtfs} from "./Wtfs";
 //[ ] No sabemos cómo modularizar por compoenntes cuando necesitan estado compartido
 
 function App(){
-    function wtf(){
-        setWtfs(wtfs => wtfs + 1)
-    }
-    function toggle(){
-        if (inPanic){
-            setWtfs(0)
 
-            setHistorial(historial  => [...historial, new HistoryElement(start, new Date(), wtfs)])
-        }
-        else
-        {
-            setStart(start => new Date());
-        }
-        setPanic(current => !current)
-    }
-
-
-    const [start, setStart] = React.useState(new Date())
-    const [wtfs, setWtfs] = React.useState(0)
-    const [inPanic, setPanic] = React.useState(false)
-    const [historial ,setHistorial] = React.useState(Array(0))
-    const [elapsed ,setElapsed] = React.useState(0)
-
-    const historialLabels = historial.map((wtf, index) => <li key={index}>{wtf.toString()}</li>)
 
     // create an interval and do cleanup
-    useEffect(() => {
-        const delta = 17
-
-        if (inPanic) {
-            const interval = setInterval(() => {
-                setElapsed(elapsed => elapsed + delta)
-            }
-            , delta);
-            return () => clearInterval(interval);
-        }
-        else
-        {
-            setElapsed(0)
-        }
-    }, [inPanic]);
 
     return (
         <div className="App">
             <Title/>
-            <Wtfs onClick={toggle} inPanic={inPanic} wtfs={wtfs} elapsed={elapsed} onClick1={wtf}
-                  elements={historialLabels}/>
+            <Wtfs />
         </div>
     );
 }
 
-export function WtfPerMinute(wtfs: number, elapsed: number) {
-    return elapsed <= 60000 ? wtfs : wtfs / (elapsed / 60000)
-}
+
 export default App;
